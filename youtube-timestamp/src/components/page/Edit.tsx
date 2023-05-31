@@ -1,15 +1,15 @@
-import { Form } from "../ui/form/form";
+import { RecoilRoot } from "recoil";
+import { YouTubePlayer } from "../model/player/Player";
+import { UrlForm } from "../model/url/UrlForm";
 
-interface Props {
-    youtube_url: string;
-}
-
-export const Edit: React.FC<Props> = (props) => {
+export const Edit: React.FC = () => {
     return (
-        <div>
-            <h2>Edit</h2>
-            <p>{props.youtube_url}</p>
-            <Form />
-        </div>
+        <RecoilRoot>
+            <div>
+                <h2>Edit</h2>
+                <UrlForm />
+                <YouTubePlayer />
+            </div>
+        </RecoilRoot>
     );
 };

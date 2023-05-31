@@ -1,5 +1,5 @@
-import React from "react";
 import {Routes, Route} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Top } from "./components/page/Top";
 import { Edit } from "./components/page/Edit";
@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route path="/" element={<Top />}/>
-        <Route path="/edit" element={<Edit youtube_url="hoge"/>}/>
+        <Route path="/edit" element={<Edit />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
     </div>
