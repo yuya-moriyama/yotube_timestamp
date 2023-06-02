@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const CurrentTimeState = atom<string>({
-    key: "CurrentTimeState",
-    default: "",
+export const currentTimeState = atom<string>({
+    key: "currentTimeState",
+    default: "00:00:00",
 });

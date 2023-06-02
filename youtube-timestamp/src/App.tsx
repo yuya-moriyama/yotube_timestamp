@@ -1,3 +1,4 @@
+import { RecoilRoot } from "recoil";
 import {Routes, Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -8,11 +9,13 @@ import { NotFound } from "./components/page/NotFound";
 const App = () => {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Top />}/>
-        <Route path="/edit" element={<Edit />}/>
-        <Route path="*" element={<NotFound />}/>
-      </Routes>
+      <RecoilRoot>
+        <Routes>
+          <Route path="/" element={<Top />}/>
+          <Route path="/edit" element={<Edit />}/>
+          <Route path="*" element={<NotFound />}/>
+        </Routes>
+      </RecoilRoot>
     </div>
   );
 };

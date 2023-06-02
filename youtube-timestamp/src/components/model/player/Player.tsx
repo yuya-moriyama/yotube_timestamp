@@ -1,37 +1,29 @@
 import ReactPlayer from 'react-player';
-import { useRecoilValue, useRecoilState} from "recoil";
+import { OnProgressProps } from 'react-player/base';
+import { useRecoilValue } from "recoil";
 import { urlState } from '../../states/UrlState';
-import { useState } from 'react';
-import { CurrentTimeState } from '../../states/CurrentTimeState';
-import { convertTimestamp } from '../../../utils/Time';
 
-export const YouTubePlayer = () => {
+
+interface Props {
+    setPlayer: (player: ReactPlayer) => void;
+    onProgresshandler: (progress: OnProgressProps) => void;
+}
+
+export const Player: React.FC<Props> = (props: Props) => {
     const url = useRecoilValue<string>(urlState)
-    const [player, setPlayer] = useState<ReactPlayer>()
-    const [currentTime, setCurrentTime] = useRecoilState<string>(CurrentTimeState)
-
-    const ref = (player: ReactPlayer) => {
-        setPlayer(player)
-    }
-
-    const onClickHandler = () => {
-        alert(currentTime)
-    }
 
     return (
-        <div>
+    <div className='card p-0'>
+        <div className='card-body'>
             <ReactPlayer
                 url={url}
-                ref={ref}
-                className="react-player"
+                ref={props.setPlayer}
+                className="react-player m-0 p-0"
                 controls={true}
                 playing={false}
-                onProgress={(progress) => {
-                    setCurrentTime(convertTimestamp(progress.playedSeconds));
-                }}
+                onProgress={props.onProgresshandler}
             />
-            <span>{currentTime}</span>
-            <input type='button' onClick={onClickHandler} value="timestamp" />
         </div>
+    </div>
     );
 };
